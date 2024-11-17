@@ -1,13 +1,11 @@
-const express = require('express')
-const router = express.Router()
 const bcrypt = require('bcrypt')
 const User = require("../models/user")
 
-router.get('/sign-up', (req, res)=>{
+const showSignUp = (req, res)=>{
   res.render("auth/sign-up.ejs")
-})
+}
 
-router.post("/sign-up", async (req, res) => {
+const signUp = async (req, res) => {
   try{
     const userInDatabase = await User.findOne({username: req.body.username})
     if(userInDatabase){
@@ -27,13 +25,13 @@ router.post("/sign-up", async (req, res) => {
     console.log(error);
     res.redirect('/')
   }
-});
+}
 
-router.get('/sign-in', (req, res)=>{
+const showSignIn =  (req, res)=>{
   res.render('auth/sign-in.ejs')
-})
+}
 
-router.post('/sign-in', async(req, res)=>{
+const signIn = async(req, res)=>{
   try{
     const userInDatabase = await User.findOne({username: req.body.username})
     if(!userInDatabase){
@@ -55,11 +53,17 @@ router.post('/sign-in', async(req, res)=>{
     console.log(error);
     res.redirect('/')
   }
-})
+}
 
-router.get('/sign-out', (req, res)=>{
+const signOut = (req, res)=>{
   req.session.destroy();
   res.redirect("/");
-})
+}
 
-module.exports = router
+module.exports = {
+  showSignUp,
+  signUp,
+  showSignIn,
+  signIn,
+  signOut
+}

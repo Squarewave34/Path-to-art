@@ -13,6 +13,7 @@ const port = process.env.PORT ? process.env.PORT: "3000"
 
 const authController = require("./controllers/auth.js");
 const isSignedIn = require('./middleware/is-signed-in.js')
+const authRoute = require('./routes/auth')
 const passUserToView = require('./middleware/pass-user-to-view')
 
 
@@ -36,8 +37,6 @@ app.use(
 
 app.use(passUserToView)
 
-app.use("/auth", authController);
-
 app.use((req, res, next) =>{
   if(req.session.message){
     res.locals.message = req.session.message
@@ -47,6 +46,10 @@ app.use((req, res, next) =>{
   }
   next()
 })
+
+app.use("/auth", authRoute);
+
+
 
 app.get("/", (req, res) => {
   res.render("index.ejs", {
