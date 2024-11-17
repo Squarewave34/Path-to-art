@@ -2,6 +2,8 @@
 ## MVP
 
 1. prepare
+- packages ||
+- env ||
 - models
 - views
 - controllers
