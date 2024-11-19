@@ -6,12 +6,18 @@
   <title>Document</title>
 </head>
 <body>
+  <%- include('../partials/_navbar.ejs') %>
   <h1><%= folder.folderName %></h1>
 
   <br>
   <br>
 
   <a href="/waitingProjects/<%= folder._id %>/edit">edit this folder</a>
+
+  <br>
+  <br>
+
+  <a href="/waitingProjects/projects/new">add a project</a>
 
   <br>
   <br>

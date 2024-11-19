@@ -13,6 +13,9 @@ const folderSchema = new mongoose.Schema({
     required: true,
     ref: 'User'
   },
+  projects:{
+    type: [mongoose.Schema.Types.ObjectId],
+  },
 },{
   timestamps: true
 })
