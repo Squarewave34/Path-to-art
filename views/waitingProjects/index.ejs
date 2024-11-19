@@ -8,5 +8,10 @@
 <body>
   <%- include('../partials/_navbar.ejs') %>
   <h1>Welcome to waiting projects</h1>
+
+  <% folders.forEach((folder)=>{ %>
+    <h1><%= folder.folderName %></h1>
+  <% }) %>
+  <a href="/waitingProjects/new">add a new folder</a>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <h1>New folder</h1>
+  <form action="/waitingProjects" method="post">
+    <label for="folderName">folder name:</label>
+    <input type="text" name="folderName" id="folderName" />
+
+    <br>
+    <br>
+
+    <label for="colorCode">color hex code:</label>
+    <input type="text" name="colorCode" id="colorCode" />
+
+    <br>
+    <br>
+
+    <button type="submit">Add folder</button>
+  </form>
+</body>
+</html>
