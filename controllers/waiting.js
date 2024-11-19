@@ -60,6 +60,23 @@ const submitEditedFolder = async(req, res)=>{
   }
 }
 
+const deleteFolder = async(req, res)=>{
+  try{
+    const folder = await Folder.findById(req.params.folderId)
+
+    if(folder.owner.equals(req.session.user._id)){
+      await folder.deleteOne()
+      res.redirect(`/${wp}`)
+    }else{
+      res.send("you can't delete a list that isn't yours")
+    }
+
+  }catch(error){
+    console.log(error);
+    res.redirect('/')
+  }
+}
+
 module.exports = {
   show,
   showNewFolder,
@@ -67,4 +84,5 @@ module.exports = {
   showFolder,
   editFolder,
   submitEditedFolder,
+  deleteFolder,
 }

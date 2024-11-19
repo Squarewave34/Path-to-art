@@ -8,5 +8,6 @@ router.post('/', waitingController.makeNewFolder)
 router.get('/:folderId', waitingController.showFolder)
 router.get('/:folderId/edit', waitingController.editFolder)
 router.put('/:folderId', waitingController.submitEditedFolder)
+router.delete('/:folderId', waitingController.deleteFolder)
 
 module.exports = router

@@ -12,5 +12,12 @@
   <br>
 
   <a href="/waitingProjects/<%= folder._id %>/edit">edit this folder</a>
+
+  <br>
+  <br>
+
+  <form action="/waitingProjects/<%= folder._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete this folder</button>
+  </form>
 </body>
 </html>
