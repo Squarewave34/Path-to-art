@@ -11,10 +11,13 @@ const session = require('express-session')
 
 const port = process.env.PORT ? process.env.PORT: "3000"
 
-const authController = require("./controllers/auth.js");
 const isSignedIn = require('./middleware/is-signed-in.js')
-const authRoute = require('./routes/auth')
 const passUserToView = require('./middleware/pass-user-to-view')
+const authRoute = require('./routes/auth.js')
+const waitingRoute = require('./routes/waiting.js')
+const importantRoute = require('./routes/important.js')
+const ongoingRoute = require('./routes/ongoing.js')
+const completedRoute = require('./routes/completed.js')
 
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -47,9 +50,11 @@ app.use((req, res, next) =>{
   next()
 })
 
-app.use("/auth", authRoute);
-
-
+app.use("/auth", authRoute)
+app.use("/waitingProjects", isSignedIn, waitingRoute)
+app.use("/importantProjects", isSignedIn, importantRoute)
+app.use("/ongoingProjects", isSignedIn, ongoingRoute)
+app.use("/completedProjects", isSignedIn, completedRoute)
 
 app.get("/", (req, res) => {
   res.render("index.ejs", {
