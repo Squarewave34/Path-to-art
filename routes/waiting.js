@@ -6,5 +6,7 @@ router.get('/', waitingController.show)
 router.get('/new', waitingController.showNewFolder)
 router.post('/', waitingController.makeNewFolder)
 router.get('/:folderId', waitingController.showFolder)
+router.get('/:folderId/edit', waitingController.editFolder)
+router.put('/:folderId', waitingController.submitEditedFolder)
 
 module.exports = router

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <h1>edit <%= folder.folderName %></h1>
+  <form action="/waitingProjects/<%= folder._id %>?_method=PUT" method="POST">
+    <label for="folderName">folder name:</label>
+    <input type="text" name="folderName" id="folderName" value="<%= folder.folderName %>" />
+
+    <br>
+    <br>
+
+    <label for="colorCode">color hex code:</label>
+    <input type="text" name="colorCode" id="colorCode" value="<%= folder.colorCode %>"/>
+
+    <br>
+    <br>
+
+    <button type="submit">Add folder</button>
+  </form>
+</body>
+</html>

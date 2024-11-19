@@ -34,9 +34,37 @@ const showFolder = async(req, res) => {
   }
 }
 
+const editFolder = async(req, res) => {
+  try{
+    const folder = await Folder.findById(req.params.folderId)
+    res.render(`${wp}/edit.ejs`, {folder})
+  }catch(error){
+    console.log(error);
+    res.redirect('/')
+  }
+}
+
+const submitEditedFolder = async(req, res)=>{
+  try{
+    const folder = await Folder.findById(req.params.folderId)
+    
+    if(folder.owner.equals(req.session.user._id)){
+      await folder.updateOne(req.body)
+      res.redirect(`/${wp}/${req.params.folderId}`)
+    }else{
+      res.send("you can't edit a folder that isn't yours")
+    }
+  }catch(error){
+    console.log(error);
+    res.redirect('/')
+  }
+}
+
 module.exports = {
   show,
   showNewFolder,
   makeNewFolder,
   showFolder,
+  editFolder,
+  submitEditedFolder,
 }
