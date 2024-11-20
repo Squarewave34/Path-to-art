@@ -10,5 +10,12 @@
   <h1><%= project.name %></h1>
   <br>
   <a href="/waitingProjects/project/<%= project._id %>/edit">Edit this project</a>
+
+  <br>
+  <br>
+
+  <form action="/waitingProjects/project/<%= project._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete this project</button>
+  </form>
 </body>
 </html>

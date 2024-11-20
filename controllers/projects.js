@@ -55,6 +55,22 @@ const submitEditedProject = async(req, res)=>{
   }catch(error){
     console.log(error);
     res.redirect('/')
+  }
+}
+
+const deleteProject = async(req, res)=>{
+  try{
+    const project = await Project.findById(req.params.projectId)
+
+    if(project.owner.equals(req.session.user._id)){
+      await project.deleteOne();
+      res.redirect(`/${wp}`)
+    }else{
+      res.send("you can't delete a project that isn't yours")
+    }
+  }catch(error){
+    console.log(error);
+    res.redirect('/')
   }}
 
 module.exports = {
@@ -62,5 +78,6 @@ module.exports = {
   makeNewProject,
   showProject,
   editProject,
-  submitEditedProject
+  submitEditedProject,
+  deleteProject
 }

@@ -16,5 +16,6 @@ router.post('/projects', projectController.makeNewProject)
 router.get('/project/:projectId', projectController.showProject)
 router.get('/project/:projectId/edit', projectController.editProject)
 router.put('/project/:projectId', projectController.submitEditedProject)
+router.delete('/project/:projectId', projectController.deleteProject)
 
 module.exports = router
