@@ -40,9 +40,6 @@ const projectSchema = new mongoose.Schema({
   notes:{
     type: String
   },
-  startDate:{
-    type: Date,
-  },
   FinishedProduct:{
     type: String
   },
