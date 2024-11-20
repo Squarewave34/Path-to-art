@@ -21,7 +21,18 @@ const makeNewProject = async(req, res)=>{
   }
 }
 
+const showProject = async(req, res)=>{
+  try{
+    const project = await Project.findById(req.params.projectId)
+    res.render(`projects/show.ejs`, {project})
+  }catch(error){
+    console.log(error);
+    res.redirect('/')
+  }
+}
+
 module.exports = {
   newProject,
-  makeNewProject
+  makeNewProject,
+  showProject
 }

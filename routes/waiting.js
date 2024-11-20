@@ -13,5 +13,6 @@ router.delete('/:folderId', waitingController.deleteFolder)
 
 router.get('/projects/new', projectController.newProject)
 router.post('/projects', projectController.makeNewProject)
+router.get('/project/:projectId', projectController.showProject)
 
 module.exports = router
