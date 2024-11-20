@@ -9,6 +9,10 @@
   <%- include('../partials/_navbar.ejs') %>
   <h1><%= folder.folderName %></h1>
 
+  <% projects.forEach((project)=>{ %>
+    <h1><%= project.name %></h1>
+  <% }) %>
+
   <br>
   <br>
 

@@ -1,4 +1,5 @@
 const Folder = require("../models/folder")
+const Project = require("../models/projects")
 
 const wp = "waitingProjects"
 
@@ -27,7 +28,8 @@ const makeNewFolder = async(req, res) => {
 const showFolder = async(req, res) => {
   try{
     const folder = await Folder.findById(req.params.folderId)
-    res.render(`${wp}/show.ejs`, {folder})
+    const projects = await Project.find({owner: req.session.user._id})
+    res.render(`${wp}/show.ejs`, {folder, projects})
   }catch(error){
     console.log(error);
     res.redirect('/')
