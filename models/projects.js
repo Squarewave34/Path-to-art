@@ -10,6 +10,9 @@ const projectSchema = new mongoose.Schema({
     required: true,
     ref: 'User'
   },
+  folderId:{
+    type: mongoose.Schema.Types.ObjectId,
+  },
   inspoBoard:{
     type: String,
   },

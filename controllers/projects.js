@@ -13,6 +13,7 @@ const makeNewProject = async(req, res)=>{
     req.body.owner = req.session.user._id;
     req.body.completionPercentage = 0;
     req.body.completionStatus = false;
+    req.body.folderId = req.params.folderId
 
     await Project.create(req.body);
     res.redirect(`/${wp}/${req.params.folderId}`)

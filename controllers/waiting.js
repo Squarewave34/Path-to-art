@@ -28,7 +28,7 @@ const makeNewFolder = async(req, res) => {
 const showFolder = async(req, res) => {
   try{
     const folder = await Folder.findById(req.params.folderId)
-    const projects = await Project.find({owner: req.session.user._id})
+    const projects = await Project.find({folderId: req.params.folderId})
     res.render(`${wp}/show.ejs`, {folder, projects})
   }catch(error){
     console.log(error);
@@ -68,6 +68,7 @@ const deleteFolder = async(req, res)=>{
 
     if(folder.owner.equals(req.session.user._id)){
       await folder.deleteOne()
+      await Project.deleteMany({folderId: req.params.folderId, owner: req.session.user._id})
       res.redirect(`/${wp}`)
     }else{
       res.send("you can't delete a list that isn't yours")
