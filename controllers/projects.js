@@ -5,7 +5,7 @@ const Project = require("../models/projects")
 const wp = "waitingProjects"
 
 const newProject = (req, res) => {
-  res.render(`projects/new.ejs`)
+  res.render(`projects/new.ejs`, {folder: req.params.folderId})
 }
 
 const makeNewProject = async(req, res)=>{
@@ -15,7 +15,7 @@ const makeNewProject = async(req, res)=>{
     req.body.completionStatus = false;
 
     await Project.create(req.body);
-    res.send(`added`)
+    res.redirect(`/${wp}/${req.params.folderId}`)
   }catch(error){
     console.log(error);
     res.redirect('/')
@@ -25,7 +25,8 @@ const makeNewProject = async(req, res)=>{
 const showProject = async(req, res)=>{
   try{
     const project = await Project.findById(req.params.projectId)
-    res.render(`projects/show.ejs`, {project})
+    const folder = req.params.folderId
+    res.render(`projects/show.ejs`, {project, folder})
   }catch(error){
     console.log(error);
     res.redirect('/')
@@ -34,8 +35,9 @@ const showProject = async(req, res)=>{
 
 const editProject = async(req, res)=>{
   try{
+    const folder = req.params.folderId
     const project = await Project.findById(req.params.projectId)
-    res.render(`projects/edit.ejs`, {project})
+    res.render(`projects/edit.ejs`, {project, folder})
   }catch(error){
     console.log(error);
     res.redirect('/')
@@ -64,14 +66,15 @@ const deleteProject = async(req, res)=>{
 
     if(project.owner.equals(req.session.user._id)){
       await project.deleteOne();
-      res.redirect(`/${wp}`)
+      res.redirect(`/${wp}/${req.params.folderId}`)
     }else{
       res.send("you can't delete a project that isn't yours")
     }
   }catch(error){
     console.log(error);
     res.redirect('/')
-  }}
+  }
+}
 
 module.exports = {
   newProject,

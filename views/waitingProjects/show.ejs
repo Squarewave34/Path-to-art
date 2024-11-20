@@ -10,7 +10,7 @@
   <h1><%= folder.folderName %></h1>
 
   <% projects.forEach((project)=>{ %>
-    <a href="/waitingProjects/project/<%= project._id %>"><%= project.name %></a>
+    <a href="/waitingProjects/<%= folder._id %>/project/<%= project._id %>"><%= project.name %></a>
     <br>
     <br>
   <% }) %>
@@ -23,7 +23,7 @@
   <br>
   <br>
 
-  <a href="/waitingProjects/projects/new">add a project</a>
+  <a href="/waitingProjects/<%= folder._id %>/projects/new">add a project</a>
 
   <br>
   <br>

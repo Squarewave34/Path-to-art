@@ -8,7 +8,7 @@
 <body>
   <%- include('../partials/_navbar.ejs') %>
   <h1>add a new project</h1>
-  <form action="/waitingProjects/projects" method="post">
+  <form action="/waitingProjects/<%= folder %>/projects" method="post">
     <label for="name">project name:</label>
     <input type="text" name="name" id="name" />
 
