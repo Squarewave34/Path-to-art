@@ -8,5 +8,7 @@
 <body>
   <%- include('../partials/_navbar.ejs') %>
   <h1><%= project.name %></h1>
+  <br>
+  <a href="/waitingProjects/project/<%= project._id %>/edit">Edit this project</a>
 </body>
 </html>

@@ -14,5 +14,7 @@ router.delete('/:folderId', waitingController.deleteFolder)
 router.get('/projects/new', projectController.newProject)
 router.post('/projects', projectController.makeNewProject)
 router.get('/project/:projectId', projectController.showProject)
+router.get('/project/:projectId/edit', projectController.editProject)
+router.put('/project/:projectId', projectController.submitEditedProject)
 
 module.exports = router
