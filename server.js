@@ -19,7 +19,6 @@ const importantRoute = require('./routes/important.js')
 const ongoingRoute = require('./routes/ongoing.js')
 const completedRoute = require('./routes/completed.js')
 
-
 mongoose.connect(process.env.MONGODB_URI)
 
 mongoose.connection.on("connection", ()=>{

@@ -9,7 +9,11 @@
   <%- include('../partials/_navbar.ejs') %>
   <h1>edit <%= project.name %></h1>
 
-  <form action="/waitingProjects/project/<%= project._id %>?_method=PUT" method="POST">
+  <form action="<% if(project.status==='waiting'){%>
+    /waitingProjects/submit/<%= folder %>/<%= project._id %>?_method=PUT
+    <%}else if(project.status==='ongoing'){ %>
+      /ongoingProjects/submit/<%= project._id %>?_method=PUT
+    <% } %>" method="POST">
     <label for="name">project name:</label>
     <input type="text" name="name" id="name" value="<%= project.name %>"/>
 

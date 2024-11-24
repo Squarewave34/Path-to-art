@@ -13,11 +13,11 @@ router.delete('/:folderId', waitingController.deleteFolder)
 
 router.get('/:folderId/projects/new', projectController.newProject)
 router.post('/:folderId/projects', projectController.makeNewProject)
-router.get('/:folderId/project/:projectId', projectController.showProject)
-router.get('/:folderId/project/:projectId/edit', projectController.editProject)
-router.put('/project/:projectId', projectController.submitEditedProject)
-router.delete('/:folderId/project/:projectId', projectController.deleteProject)
+router.get('/show/:folderId/project/:projectId', projectController.showProject)
+router.get('/edit/:folderId/project/:projectId', projectController.editProject)
+router.put('/submit/:folderId/:projectId', projectController.submitEditedProject)
+router.delete('/delete/:folderId/project/:projectId', projectController.deleteProject)
 
-router.put('/:folderId/project/:projectId/ongoing', projectController.toOngoing)
+router.put('/ongoing/:folderId/project/:projectId', projectController.toOngoing)
 
 module.exports = router

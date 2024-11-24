@@ -4,6 +4,7 @@ const Project = require("../models/projects")
 
 const wp = "waitingProjects"
 
+// only waiting
 const newProject = (req, res) => {
   res.render(`projects/new.ejs`, {folder: req.params.folderId})
 }
@@ -24,11 +25,36 @@ const makeNewProject = async(req, res)=>{
   }
 }
 
+const toOngoing = async(req, res)=>{
+  try{
+    req.body.status = "ongoing"
+    const project = await Project.findById(req.params.projectId)
+
+    if(project.owner.equals(req.session.user._id)){
+      await project.updateOne(req.body)
+      console.log(req.body, project);
+      res.redirect(`/ongoingProjects/project/${req.params.projectId}`)
+    }else{
+      res.send("you can't edit a project that isn't yours")
+    }
+  }catch(error){
+    console.log(error);
+    res.redirect('/')
+  }
+}
+
+// multi
 const showProject = async(req, res)=>{
   try{
     const project = await Project.findById(req.params.projectId)
-    const folder = req.params.folderId
-    res.render(`projects/show.ejs`, {project, folder})
+
+    if(project.status==="waiting"){
+      const folder = req.params.folderId
+      res.render(`projects/show.ejs`, {project, folder})
+    }
+    else if(project.status==="ongoing"){
+      res.render(`projects/show.ejs`, {project})
+    }
   }catch(error){
     console.log(error);
     res.redirect('/')
@@ -37,9 +63,14 @@ const showProject = async(req, res)=>{
 
 const editProject = async(req, res)=>{
   try{
-    const folder = req.params.folderId
     const project = await Project.findById(req.params.projectId)
-    res.render(`projects/edit.ejs`, {project, folder})
+    if(project.status==="waiting"){
+      const folder = req.params.folderId
+      res.render(`projects/edit.ejs`, {project, folder})
+    }
+    else if(project.status==="ongoing"){
+      res.render(`projects/edit.ejs`, {project})
+    }
   }catch(error){
     console.log(error);
     res.redirect('/')
@@ -51,8 +82,14 @@ const submitEditedProject = async(req, res)=>{
     const project = await Project.findById(req.params.projectId)
 
     if(project.owner.equals(req.session.user._id)){
-      await project.updateOne(req.body)
-      res.redirect(`/${wp}/${req.params.folderId}/project/${req.params.projectId}`)
+      if(project.status==="waiting"){
+        await project.updateOne(req.body)
+        res.redirect(`/${wp}/show/${req.params.folderId}/project/${req.params.projectId}`)
+      }else if(project.status==="ongoing"){
+        await project.updateOne(req.body)
+        res.redirect(`/ongoingProjects/project/${req.params.projectId}`)
+      }
+
     }else{
       res.send("you can't edit a project that isn't yours")
     }
@@ -67,28 +104,16 @@ const deleteProject = async(req, res)=>{
     const project = await Project.findById(req.params.projectId)
 
     if(project.owner.equals(req.session.user._id)){
-      await project.deleteOne();
-      res.redirect(`/${wp}/${req.params.folderId}`)
+      if(project.status==="waiting"){
+        await project.deleteOne();
+        res.redirect(`/${wp}/${req.params.folderId}`)
+      }else if(project.status==="ongoing"){
+        await project.deleteOne();
+        res.redirect(`/ongoingProjects`)
+      }
+
     }else{
       res.send("you can't delete a project that isn't yours")
-    }
-  }catch(error){
-    console.log(error);
-    res.redirect('/')
-  }
-}
-
-const toOngoing = async(req, res)=>{
-  try{
-    req.body.status = "ongoing"
-    const project = await Project.findById(req.params.projectId)
-
-    if(project.owner.equals(req.session.user._id)){
-      await project.updateOne(req.body)
-      console.log(req.body, project);
-      res.redirect(`/${wp}/${req.params.folderId}/project/${req.params.projectId}`)
-    }else{
-      res.send("you can't edit a project that isn't yours")
     }
   }catch(error){
     console.log(error);
@@ -103,5 +128,5 @@ module.exports = {
   editProject,
   submitEditedProject,
   deleteProject,
-  toOngoing
+  toOngoing,
 }

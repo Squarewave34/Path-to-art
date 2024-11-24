@@ -10,17 +10,31 @@
   <h1><%= project.name %></h1>
   <h2><%= project.status %></h2>
   <br>
-  <a href="/waitingProjects/<%= folder %>/project/<%= project._id %>/edit">Edit this project</a>
+
+  <% if(project.status==="waiting") { %>
+  <a href="/waitingProjects/edit/<%= folder %>/project/<%= project._id %>">Edit this project</a>
 
   <br>
   <br>
 
-  <form action="/waitingProjects/<%= folder %>/project/<%= project._id %>/ongoing?_method=PUT" method="POST">
+  <form action="/waitingProjects/ongoing/<%= folder %>/project/<%= project._id %>?_method=PUT" method="POST">
     <button type="submit">start working on this project</button>
   </form>
 
-  <form action="/waitingProjects/<%= folder %>/project/<%= project._id %>?_method=DELETE" method="POST">
+  <form action="/waitingProjects/delete/<%= folder %>/project/<%= project._id %>?_method=DELETE" method="POST">
     <button type="submit">Delete this project</button>
   </form>
+  <% } %>
+
+  <% if(project.status==="ongoing") { %>
+    <a href="/ongoingProjects/edit/<%= project._id %>">Edit this project</a>
+
+    <br>
+    <br>
+
+    <form action="/ongoingProjects/delete/<%= project._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete this project</button>
+    </form>
+    <% } %>
 </body>
 </html>

@@ -11,7 +11,7 @@
 
   <% projects.forEach((project)=>{ %>
     <% if(project.status==="ongoing") {%>
-    <a href="project/<%= project._id %>"><%= project.name %></a>
+    <a href="/ongoingProjects/project/<%= project._id %>"><%= project.name %></a>
     <br>
     <br>
   <% }}) %>
