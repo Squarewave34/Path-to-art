@@ -52,6 +52,10 @@ const projectSchema = new mongoose.Schema({
   stage:{
     type: mongoose.Schema.Types.ObjectId,
   },
+  status:{
+    type: String,
+    required: true
+  }
 },{
   timestamps: true
 })

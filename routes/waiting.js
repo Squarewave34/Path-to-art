@@ -18,4 +18,6 @@ router.get('/:folderId/project/:projectId/edit', projectController.editProject)
 router.put('/project/:projectId', projectController.submitEditedProject)
 router.delete('/:folderId/project/:projectId', projectController.deleteProject)
 
+router.put('/:folderId/project/:projectId/ongoing', projectController.toOngoing)
+
 module.exports = router

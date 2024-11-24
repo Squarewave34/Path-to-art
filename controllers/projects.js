@@ -14,6 +14,7 @@ const makeNewProject = async(req, res)=>{
     req.body.completionPercentage = 0;
     req.body.completionStatus = false;
     req.body.folderId = req.params.folderId
+    req.body.status = "waiting"
 
     await Project.create(req.body);
     res.redirect(`/${wp}/${req.params.folderId}`)
@@ -50,8 +51,8 @@ const submitEditedProject = async(req, res)=>{
     const project = await Project.findById(req.params.projectId)
 
     if(project.owner.equals(req.session.user._id)){
-      await Project.updateOne(req.body)
-      res.redirect(`/${wp}/projects/${project._id}`)
+      await project.updateOne(req.body)
+      res.redirect(`/${wp}/${req.params.folderId}/project/${req.params.projectId}`)
     }else{
       res.send("you can't edit a project that isn't yours")
     }
@@ -77,11 +78,30 @@ const deleteProject = async(req, res)=>{
   }
 }
 
+const toOngoing = async(req, res)=>{
+  try{
+    req.body.status = "ongoing"
+    const project = await Project.findById(req.params.projectId)
+
+    if(project.owner.equals(req.session.user._id)){
+      await project.updateOne(req.body)
+      console.log(req.body, project);
+      res.redirect(`/${wp}/${req.params.folderId}/project/${req.params.projectId}`)
+    }else{
+      res.send("you can't edit a project that isn't yours")
+    }
+  }catch(error){
+    console.log(error);
+    res.redirect('/')
+  }
+}
+
 module.exports = {
   newProject,
   makeNewProject,
   showProject,
   editProject,
   submitEditedProject,
-  deleteProject
+  deleteProject,
+  toOngoing
 }

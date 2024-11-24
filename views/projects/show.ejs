@@ -8,11 +8,16 @@
 <body>
   <%- include('../partials/_navbar.ejs') %>
   <h1><%= project.name %></h1>
+  <h2><%= project.status %></h2>
   <br>
   <a href="/waitingProjects/<%= folder %>/project/<%= project._id %>/edit">Edit this project</a>
 
   <br>
   <br>
+
+  <form action="/waitingProjects/<%= folder %>/project/<%= project._id %>/ongoing?_method=PUT" method="POST">
+    <button type="submit">start working on this project</button>
+  </form>
 
   <form action="/waitingProjects/<%= folder %>/project/<%= project._id %>?_method=DELETE" method="POST">
     <button type="submit">Delete this project</button>
