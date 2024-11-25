@@ -8,5 +8,13 @@
 <body>
   <%- include('../partials/_navbar.ejs') %>
   <h1>Welcome to completed projects</h1>
+
+  <% projects.forEach((project)=>{ %>
+    <% if(project.status==="completed") {%>
+    <a href="/completedProjects/project/<%= project._id %>"><%= project.name %></a>
+    <br>
+    <br>
+  <% }}) %>
+
 </body>
 </html>

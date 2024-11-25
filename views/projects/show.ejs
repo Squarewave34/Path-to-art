@@ -11,30 +11,56 @@
   <h2><%= project.status %></h2>
   <br>
 
-  <% if(project.status==="waiting") { %>
-  <a href="/waitingProjects/edit/<%= folder %>/project/<%= project._id %>">Edit this project</a>
+  <div id="waiting">
+    <% if(project.status==="waiting") { %>
+      <a href="/waitingProjects/edit/<%= folder %>/project/<%= project._id %>">Edit this project</a>
+    
+      <br>
+      <br>
+    
+      <form action="/waitingProjects/ongoing/<%= folder %>/project/<%= project._id %>?_method=PUT" method="POST">
+        <button type="submit">start working on this project</button>
+      </form>
+    
+      <form action="/waitingProjects/delete/<%= folder %>/project/<%= project._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete this project</button>
+      </form>
+      <% } %>
+  </div>
 
-  <br>
-  <br>
+  <div id="ongoing">
+    <% if(project.status==="ongoing") { %>
+      <a href="/ongoingProjects/edit/<%= project._id %>">Edit this project</a>
+  
+      <br>
+      <br>
+  
+      <form action="/ongoingProjects/completed/<%= project._id %>?_method=PUT" method="POST">
+        <button type="submit">complete</button>
+      </form>
 
-  <form action="/waitingProjects/ongoing/<%= folder %>/project/<%= project._id %>?_method=PUT" method="POST">
-    <button type="submit">start working on this project</button>
-  </form>
+      <form action="/ongoingProjects/delete/<%= project._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete this project</button>
+      </form>
+      <% } %>
+  </div>
 
-  <form action="/waitingProjects/delete/<%= folder %>/project/<%= project._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete this project</button>
-  </form>
-  <% } %>
+  <div id="completed">
+    <% if(project.status==="completed") { %>
+      <a href="/completedProjects/edit/<%= project._id %>">Edit this project</a>
+  
+      <br>
+      <br>
+  
+      <form action="/completedProjects/ongoing/<%= project._id %>?_method=PUT" method="POST">
+        <button type="submit">ongoing</button>
+      </form>
 
-  <% if(project.status==="ongoing") { %>
-    <a href="/ongoingProjects/edit/<%= project._id %>">Edit this project</a>
+      <form action="/completedProjects/delete/<%= project._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete this project</button>
+      </form>
+      <% } %>
+  </div>
 
-    <br>
-    <br>
-
-    <form action="/ongoingProjects/delete/<%= project._id %>?_method=DELETE" method="POST">
-      <button type="submit">Delete this project</button>
-    </form>
-    <% } %>
 </body>
 </html>

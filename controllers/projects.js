@@ -25,6 +25,7 @@ const makeNewProject = async(req, res)=>{
   }
 }
 
+// change status
 const toOngoing = async(req, res)=>{
   try{
     req.body.status = "ongoing"
@@ -33,7 +34,25 @@ const toOngoing = async(req, res)=>{
     if(project.owner.equals(req.session.user._id)){
       await project.updateOne(req.body)
       console.log(req.body, project);
-      res.redirect(`/ongoingProjects/project/${req.params.projectId}`)
+      res.redirect(`/ongoingProjects`)
+    }else{
+      res.send("you can't edit a project that isn't yours")
+    }
+  }catch(error){
+    console.log(error);
+    res.redirect('/')
+  }
+}
+
+const toCompleted = async(req, res)=>{
+  try{
+    req.body.status = "completed"
+    const project = await Project.findById(req.params.projectId)
+
+    if(project.owner.equals(req.session.user._id)){
+      await project.updateOne(req.body)
+      console.log(req.body, project);
+      res.redirect(`/completedProjects`)
     }else{
       res.send("you can't edit a project that isn't yours")
     }
@@ -52,7 +71,7 @@ const showProject = async(req, res)=>{
       const folder = req.params.folderId
       res.render(`projects/show.ejs`, {project, folder})
     }
-    else if(project.status==="ongoing"){
+    else if(project.status==="ongoing" || project.status==="completed"){
       res.render(`projects/show.ejs`, {project})
     }
   }catch(error){
@@ -104,12 +123,13 @@ const deleteProject = async(req, res)=>{
     const project = await Project.findById(req.params.projectId)
 
     if(project.owner.equals(req.session.user._id)){
+      await project.deleteOne();
       if(project.status==="waiting"){
-        await project.deleteOne();
         res.redirect(`/${wp}/${req.params.folderId}`)
       }else if(project.status==="ongoing"){
-        await project.deleteOne();
         res.redirect(`/ongoingProjects`)
+      }else if(project.status==="completed"){
+        res.redirect(`/completedProjects`)
       }
 
     }else{
@@ -129,4 +149,5 @@ module.exports = {
   submitEditedProject,
   deleteProject,
   toOngoing,
+  toCompleted,
 }
