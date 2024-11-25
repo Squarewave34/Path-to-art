@@ -8,6 +8,7 @@ body{
   background-color: rgb(254, 234, 199);
 }
 
+/* fonts */
 h1{
   font-family: "Pacifico", cursive;
   font-weight: 400;
@@ -15,6 +16,53 @@ h1{
   color: rgb(141, 67, 22);
 }
 
+.text{
+  text-decoration: none;
+  font-family: "Sour Gummy", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(141, 67, 22);
+}
+
 .bold{
   font-weight: 600;
+}
+
+/* og */
+
+input{
+  padding: 5px;
+  border-radius: 15px;
+  border: 1.5px rgb(141, 67, 22) solid;
+}
+
+label, input{
+  font-family: "Sour Gummy", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(141, 67, 22);
+}
+
+/* special */
+
+.marginTop{
+  margin-top: 20px;
+}
+
+.submit{
+  padding: 10px;
+  border: 1.5px rgb(141, 67, 22) solid;
+  border-radius: 15px;
+}
+
+.submit:hover{
+  border:none;
+  background-color: rgb(249, 248, 245);
+  box-shadow: 3px 3px;
+}
+
+.btn{
+  background-color: rgb(254, 234, 199);
 }

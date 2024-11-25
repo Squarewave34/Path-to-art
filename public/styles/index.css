@@ -1,10 +1,10 @@
-.log{
+.submit{
   padding: 10px;
   border: 1.5px rgb(141, 67, 22) solid;
   border-radius: 15px;
 }
 
-.log:hover{
+.submit:hover{
   border:none;
   background-color: rgb(249, 248, 245);
   box-shadow: 3px 3px;
