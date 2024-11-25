@@ -1,18 +1,24 @@
-<!-- views/index.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/index.css" />
     <title>Home Page</title>
   </head>
   <body>
     <%- include('./partials/_navbar.ejs') %>
     <% if (user) { %>
-      <h1>Welcome to the app, <%= user.username %>!</h1>
+      <h1><span class="bold"><%= user.username %></span>! your journey begins here!</h1>
     <% }else{ %>
-      <h1>Welcome to the app, sign in or sign up</h1>
+      <div class="screen">
+        <h1>Welcome to the app, sign in or sign up</h1>
+        <div id="links">
+          <a class="log" href="/auth/sign-in">sign in</a>
+          <a class="log" href="/auth/sign-up">sign up</a>
+        </div>
+      </div>
     <% } %>
   </body>
 </html>

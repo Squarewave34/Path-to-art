@@ -1,0 +1,14 @@
+a{
+  text-decoration: none;
+  font-family: "Sour Gummy", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(141, 67, 22);
+  margin-right: 10px;
+}
+
+.user{
+  display: flex;
+  justify-content: space-between;
+}

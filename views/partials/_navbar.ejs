@@ -1,12 +1,16 @@
+<link rel="stylesheet" href="/styles/main.css" />
+<link rel="stylesheet" href="/styles/navbar.css" />
+
 <nav>
   <% if(user){ %>
-    <a href="/waitingProjects">View all tasks</a>
-    <a href="/importantProjects">View important projects</a>
-    <a href="/ongoingProjects">View ongoing projects</a>
-    <a href="/completedProjects">View completed projects</a>
-    <a href="/auth/sign-out">sign out</a>
-  <% }else{ %>
-    <a href="/auth/sign-in">sign in</a>
-    <a href="/auth/sign-up">sign up</a>
-  <%} %>
+    <div class="user">
+      <div>
+        <a href="/waitingProjects">View all tasks</a>
+        <a href="/importantProjects">View important projects</a>
+        <a href="/ongoingProjects">View ongoing projects</a>
+        <a href="/completedProjects">View completed projects</a>
+      </div>
+      <a href="/auth/sign-out">sign out</a>
+    </div>
+  <% } %>
 </nav>

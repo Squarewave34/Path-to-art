@@ -1,0 +1,23 @@
+.log{
+  padding: 10px;
+  border: 1.5px rgb(141, 67, 22) solid;
+  border-radius: 15px;
+}
+
+.log:hover{
+  border:none;
+  background-color: rgb(249, 248, 245);
+  box-shadow: 3px 3px;
+}
+
+.screen{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#links{
+  margin-top: 30px;
+}

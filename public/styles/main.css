@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: rgb(254, 234, 199);
+}
+
+h1{
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(141, 67, 22);
+}
+
+.bold{
+  font-weight: 600;
+}
