@@ -9,4 +9,5 @@ router.get('/edit/:projectId', projectController.editProject)
 router.delete('/delete/:projectId', projectController.deleteProject)
 router.put('/submit/:projectId', projectController.submitEditedProject)
 router.put('/ongoing/:projectId', projectController.toOngoing)
+router.put('/waiting/:projectId', projectController.toWaiting)
 module.exports = router

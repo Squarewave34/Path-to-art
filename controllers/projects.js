@@ -62,6 +62,24 @@ const toCompleted = async(req, res)=>{
   }
 }
 
+const toWaiting = async(req, res)=>{
+  try{
+    req.body.status = "waiting"
+    const project = await Project.findById(req.params.projectId)
+
+    if(project.owner.equals(req.session.user._id)){
+      await project.updateOne(req.body)
+      console.log(req.body, project);
+      res.redirect(`/waitingProjects/${project.folderId}`)
+    }else{
+      res.send("you can't edit a project that isn't yours")
+    }
+  }catch(error){
+    console.log(error);
+    res.redirect('/')
+  }
+}
+
 // multi
 const showProject = async(req, res)=>{
   try{
@@ -150,4 +168,5 @@ module.exports = {
   deleteProject,
   toOngoing,
   toCompleted,
+  toWaiting,
 }

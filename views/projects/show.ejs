@@ -34,6 +34,10 @@
   
       <br>
       <br>
+
+      <form action="/ongoingProjects/waiting/<%= project._id %>?_method=PUT" method="POST">
+        <button type="submit">waiting</button>
+      </form>
   
       <form action="/ongoingProjects/completed/<%= project._id %>?_method=PUT" method="POST">
         <button type="submit">complete</button>
@@ -54,6 +58,10 @@
   
       <form action="/completedProjects/ongoing/<%= project._id %>?_method=PUT" method="POST">
         <button type="submit">ongoing</button>
+      </form>
+
+      <form action="/completedProjects/waiting/<%= project._id %>?_method=PUT" method="POST">
+        <button type="submit">waiting</button>
       </form>
 
       <form action="/completedProjects/delete/<%= project._id %>?_method=DELETE" method="POST">
