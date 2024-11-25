@@ -14,8 +14,9 @@ const makeNewProject = async(req, res)=>{
     req.body.owner = req.session.user._id;
     req.body.completionPercentage = 0;
     req.body.completionStatus = false;
-    req.body.folderId = req.params.folderId
-    req.body.status = "waiting"
+    req.body.folderId = req.params.folderId;
+    req.body.status = "waiting";
+    req.body.important = false;
 
     await Project.create(req.body);
     res.redirect(`/${wp}/${req.params.folderId}`)
@@ -159,6 +160,22 @@ const deleteProject = async(req, res)=>{
   }
 }
 
+const important = async(req, res)=>{
+  try{
+    const project = await Project.findById(req.params.projectId)
+    req.body.important=!project.important
+
+    if(project.owner.equals(req.session.user._id)){
+      await project.updateOne(req.body)
+      res.redirect(`/importantProjects`)
+    }else{
+      res.send("you can't edit a project that isn't yours")
+    }
+  }catch(error){
+    console.log(error);
+    res.redirect('/')
+  }
+}
 module.exports = {
   newProject,
   makeNewProject,
@@ -169,4 +186,5 @@ module.exports = {
   toOngoing,
   toCompleted,
   toWaiting,
+  important,
 }

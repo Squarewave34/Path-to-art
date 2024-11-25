@@ -11,12 +11,28 @@
   <h2><%= project.status %></h2>
   <br>
 
+  <% if(project.status!='completed'){ %>
+    <form action="/<%= project.status %>Projects/important/<%= project._id %>?_method=PUT" method="POST">
+      <button type="submit">
+        <% if(project.important){ %>
+          mark not important
+        <% }else{ %>
+          mark important
+        <% } %>
+      </button>
+    </form>
+  <% } %>
+
   <div id="waiting">
     <% if(project.status==="waiting") { %>
       <a href="/waitingProjects/edit/<%= folder %>/project/<%= project._id %>">Edit this project</a>
-    
+
       <br>
       <br>
+
+      <form action="/waitingProjects/completed/<%= project._id %>?_method=PUT" method="POST">
+        <button type="submit">complete</button>
+      </form>
     
       <form action="/waitingProjects/ongoing/<%= folder %>/project/<%= project._id %>?_method=PUT" method="POST">
         <button type="submit">start working on this project</button>

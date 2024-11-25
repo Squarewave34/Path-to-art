@@ -13,5 +13,6 @@ router.put('/submit/:projectId', projectController.submitEditedProject)
 
 router.put('/completed/:projectId', projectController.toCompleted)
 router.put('/waiting/:projectId', projectController.toWaiting)
+router.put('/important/:projectId', projectController.important)
 
 module.exports = router

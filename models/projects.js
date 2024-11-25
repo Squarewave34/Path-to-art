@@ -55,6 +55,9 @@ const projectSchema = new mongoose.Schema({
   status:{
     type: String,
     required: true
+  },important:{
+    type: Boolean,
+    required: true
   }
 },{
   timestamps: true

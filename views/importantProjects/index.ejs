@@ -8,5 +8,20 @@
 <body>
   <%- include('../partials/_navbar.ejs') %>
   <h1>Welcome to important projects</h1>
+
+  <% projects.forEach((project)=>{ %>
+    <% if(project.important && project.status!="waiting"){%>
+    <a href="/<%= project.status %>Projects/project/<%= project._id %>"><%= project.name %></a>
+    <br>
+    <br>
+    <% } %>
+
+    <% if(project.important && project.status==="waiting"){%>
+      <a href="/waitingProjects/show/<%= project.folderId %>/project/<%= project._id %>"><%= project.name %></a>
+      <br>
+      <br>
+    <% } %>
+  <% }) %>
+
 </body>
 </html>
