@@ -8,71 +8,79 @@
 <body>
   <%- include('../partials/_navbar.ejs') %>
   <h1>add a new project</h1>
-  <form action="/waitingProjects/<%= folder %>/projects" method="post">
-    <label for="name">project name:</label>
-    <input type="text" name="name" id="name" />
 
-    <br>
-    <br>
+  <div class="flex">
+    <div class="container">
+      <form action="/waitingProjects/<%= folder %>/projects" method="post">
+        <label for="name">project name:</label>
+        <input type="text" name="name" id="name" />
+    
+        <br>
+        <br>
+    
+        <label for="inspoBoard">inspiration boards:</label>
+        <input type="url" name="inspoBoard" id="inspoBoard" />
+    
+        <br>
+        <br>
+    
+        <label for="refs">References:</label>
+        <input type="text" name="refs" id="refs" />
+    
+        <br>
+        <br>
+    
+        <label for="links">links:</label>
+        <input type="url" name="links" id="links" />
+    
+        <br>
+        <br>
+    
+        <label for="type">project type</label>
+    
+        <br>
+    
+        <label for="personal">personal project</label>
+        <input type="radio" id="personal" name="type" value="personal" />
+    
+        <br>
+    
+        <label for="commission">personal commission</label>
+        <input type="radio" id="commission" name="type" value="commission" />
+    
+        <br>
+    
+        <label for="commercial">commercial use commission</label>
+        <input type="radio" id="commercial" name="type" value="commercial" />
+    
+        <br>
+    
+        <label for="trade">art trade</label>
+        <input type="radio" id="trade" name="type" value="trade" />
+    
+        <br>
+    
+        <label for="other">other</label>
+        <input type="radio" id="other" name="type" value="other" />
+    
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio -->
+    
+        <br>
+        <br>
+    
+        <label for="notes">notes:</label>
+        <textarea name="notes" id="notes"></textarea>
+    
+        <!-- https://www.w3schools.com/tags/tag_textarea.asp#:~:text=The%20tag%20defines%20a,width%20font%20(usually%20Courier). -->
+        <br>
+        <br>
+    
+        <div class="flex">
+          <button class="submit" type="submit">Add project</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
-    <label for="inspoBoard">inspiration boards:</label>
-    <input type="url" name="inspoBoard" id="inspoBoard" />
-
-    <br>
-    <br>
-
-    <label for="refs">References:</label>
-    <input type="text" name="refs" id="refs" />
-
-    <br>
-    <br>
-
-    <label for="links">links:</label>
-    <input type="url" name="links" id="links" />
-
-    <br>
-    <br>
-
-    <label for="type">project type</label>
-
-    <br>
-
-    <label for="personal">personal project</label>
-    <input type="radio" id="personal" name="type" value="personal" />
-
-    <br>
-
-    <label for="commission">personal commission</label>
-    <input type="radio" id="commission" name="type" value="commission" />
-
-    <br>
-
-    <label for="commercial">commercial use commission</label>
-    <input type="radio" id="commercial" name="type" value="commercial" />
-
-    <br>
-
-    <label for="trade">art trade</label>
-    <input type="radio" id="trade" name="type" value="trade" />
-
-    <br>
-
-    <label for="other">other</label>
-    <input type="radio" id="other" name="type" value="other" />
-
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio -->
-
-    <br>
-    <br>
-
-    <label for="notes">notes:</label>
-    <textarea name="notes" id="notes"></textarea>
-
-    <!-- https://www.w3schools.com/tags/tag_textarea.asp#:~:text=The%20tag%20defines%20a,width%20font%20(usually%20Courier). -->
-    <br>
-    <br>
-
-    <button type="submit">Add project</button>
-  </form>
 </body>
 </html>

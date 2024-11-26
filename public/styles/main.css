@@ -29,20 +29,34 @@ h1{
   font-weight: 600;
 }
 
-/* og */
+/* og elements*/
 
-input{
+input, textarea{
   padding: 5px;
   border-radius: 15px;
   border: 1.5px rgb(141, 67, 22) solid;
 }
 
-label, input{
+label, input, textarea{
   font-family: "Sour Gummy", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
   color: rgb(141, 67, 22);
+}
+
+form{
+  text-align: left;
+}
+
+button{
+  text-decoration: none;
+  font-family: "Sour Gummy", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(141, 67, 22);
+  background-color: rgb(254, 234, 199);
 }
 
 /* orientation */
@@ -72,6 +86,13 @@ label, input{
 }
 
 /* special */
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
 
 .marginTop{
   margin-top: 20px;
@@ -96,10 +117,6 @@ label, input{
   border:none;
   background-color: rgb(249, 248, 245);
   box-shadow: 3px 3px;
-}
-
-.btn{
-  background-color: rgb(254, 234, 199);
 }
 
 .icon{
