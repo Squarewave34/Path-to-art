@@ -16,21 +16,18 @@
     <br>
   <% }}) %>
 
-  <br>
-  <br>
+  <div class="flexSpaceBetween">
+    <a class="submit" href="/waitingProjects/<%= folder._id %>/projects/new">+</a>
 
-  <a href="/waitingProjects/<%= folder._id %>/edit">edit this folder</a>
+    <div class="flex">
+      <a class="submit marginRight" href="/waitingProjects/<%= folder._id %>/edit">edit</a>
+  
+      <form action="/waitingProjects/<%= folder._id %>?_method=DELETE" method="POST">
+        <button class="text btn submit" type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
 
-  <br>
-  <br>
 
-  <a href="/waitingProjects/<%= folder._id %>/projects/new">add a project</a>
-
-  <br>
-  <br>
-
-  <form action="/waitingProjects/<%= folder._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete this folder</button>
-  </form>
 </body>
 </html>
