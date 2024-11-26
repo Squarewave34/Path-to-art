@@ -11,7 +11,12 @@
 
   <% projects.forEach((project)=>{ %>
     <% if(project.status==="waiting") {%>
-    <a href="/waitingProjects/show/<%= folder._id %>/project/<%= project._id %>"><%= project.name %></a>
+      <div class="flex">
+        <div class="card flex">
+          <a href="/waitingProjects/show/<%= folder._id %>/project/<%= project._id %>"><%= project.name %></a>
+        </div>
+      </div>
+
     <br>
     <br>
   <% }}) %>

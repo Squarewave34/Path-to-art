@@ -8,20 +8,28 @@
 <body>
   <%- include('../partials/_navbar.ejs') %>
   <h1>edit <%= folder.folderName %></h1>
-  <form action="/waitingProjects/<%= folder._id %>?_method=PUT" method="POST">
-    <label for="folderName">folder name:</label>
-    <input type="text" name="folderName" id="folderName" value="<%= folder.folderName %>" />
+  
+  <div class="flex">
+    <div class="container">
+      <form action="/waitingProjects/<%= folder._id %>?_method=PUT" method="POST">
+        <label for="folderName">folder name:</label>
+        <input type="text" name="folderName" id="folderName" value="<%= folder.folderName %>" />
+    
+        <br>
+        <br>
+    
+        <label for="colorCode">color hex code:</label>
+        <input type="text" name="colorCode" id="colorCode" value="<%= folder.colorCode %>"/>
+    
+        <br>
+        <br>
 
-    <br>
-    <br>
+        <div class="flex">
+          <button class="submit" type="submit">edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
-    <label for="colorCode">color hex code:</label>
-    <input type="text" name="colorCode" id="colorCode" value="<%= folder.colorCode %>"/>
-
-    <br>
-    <br>
-z
-    <button type="submit">Add folder</button>
-  </form>
 </body>
 </html>

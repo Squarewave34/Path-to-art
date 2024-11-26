@@ -85,15 +85,7 @@ button{
   place-items: center;
 }
 
-/* special */
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 600px;
-}
-
+/* margins */
 .marginTop{
   margin-top: 20px;
 }
@@ -104,6 +96,15 @@ button{
 
 .marginAround{
   margin: 0px 15px;
+}
+
+/* special */
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
 }
 
 .submit{
@@ -124,4 +125,13 @@ button{
   width: 100%;
   max-height: 50px;
   max-width: 50px;
+}
+
+.card{
+  width: 80%;
+  max-width: 600px;
+  height: 50px;
+  border-radius: 15px;
+  background-color: rgb(249, 248, 245);
+  box-shadow: 3px 3px #8d4316;
 }
