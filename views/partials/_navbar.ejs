@@ -1,15 +1,15 @@
 <link rel="stylesheet" href="/styles/main.css" />
 <link rel="stylesheet" href="/styles/navbar.css" />
-<link rel="stylesheet" href="/styles/sign_in.css" />
+<link rel="stylesheet" href="/styles/waiting.css" />
 
 <nav>
   <% if(user){ %>
     <div class="user">
       <div>
-        <a href="/waitingProjects">View all tasks</a>
-        <a href="/importantProjects">View important projects</a>
-        <a href="/ongoingProjects">View ongoing projects</a>
-        <a href="/completedProjects">View completed projects</a>
+        <a class="marginRight" href="/waitingProjects">View all tasks</a>
+        <a class="marginRight" href="/importantProjects">View important projects</a>
+        <a class="marginRight" href="/ongoingProjects">View ongoing projects</a>
+        <a class="marginRight" href="/completedProjects">View completed projects</a>
       </div>
       <a href="/auth/sign-out">sign out</a>
     </div>

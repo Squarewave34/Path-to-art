@@ -45,10 +45,38 @@ label, input{
   color: rgb(141, 67, 22);
 }
 
+/* orientation */
+
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexColumn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 150px 150px 150px 150px 150px;
+  place-items: center;
+}
+
 /* special */
 
 .marginTop{
   margin-top: 20px;
+}
+
+.marginRight{
+  margin-right: 10px;
+}
+
+.marginAround{
+  margin: 0px 15px;
 }
 
 .submit{
@@ -65,4 +93,11 @@ label, input{
 
 .btn{
   background-color: rgb(254, 234, 199);
+}
+
+.icon{
+  height: 100%;
+  width: 100%;
+  max-height: 50px;
+  max-width: 50px;
 }
