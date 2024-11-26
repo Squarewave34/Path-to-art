@@ -7,84 +7,91 @@
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
-  <h1><%= project.name %></h1>
-  <h2><%= project.status %></h2>
-  <br>
 
-  <% if(project.status!='completed'){ %>
-    <form action="/<%= project.status %>Projects/important/<%= project._id %>?_method=PUT" method="POST">
-      <button type="submit">
-        <% if(project.important){ %>
-          mark not important
-        <% }else{ %>
-          mark important
-        <% } %>
-      </button>
-    </form>
-  <% } %>
+  <div class="flex marginTop">
+    <div class="card">
+      <div class="flexSpaceBetween">
+        <h1 class="noMargin"><%= project.name %></h1>
+      
+        <div id="important">
+          <% if(project.status!='completed'){ %>
+            <form action="/<%= project.status %>Projects/important/<%= project._id %>?_method=PUT" method="POST">
+              <button class="importantButton" type="submit">
+                <% if(project.important){ %>
+                  <svg class="important" fill="#8d4316" width="800px" height="800px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
 
-  <div id="waiting">
-    <% if(project.status==="waiting") { %>
-      <a href="/waitingProjects/edit/<%= folder %>/project/<%= project._id %>">Edit this project</a>
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    
+                    <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" d="M1687.84 451.764H219.606V282.353c0-31.624 24.847-56.471 56.471-56.471h169.412v56.471c0 31.623 24.847 56.47 56.47 56.47 31.624 0 56.471-24.847 56.471-56.47v-56.471h790.59v56.471c0 31.623 24.85 56.47 56.47 56.47 31.62 0 56.47-24.847 56.47-56.47v-56.471h169.41c31.62 0 56.47 24.847 56.47 56.471v169.411Zm-303 618.036c-4.86-15.6-18.67-26.11-34.38-26.11h-272.01l-84.027-270.853v-.052c-4.919-15.608-18.723-26.118-34.434-26.118-15.661 0-29.515 10.51-34.384 26.17l-84.078 270.853h-272.01c-15.711 0-29.515 10.51-34.384 26.11-4.869 15.61.352 32.64 13.102 42.36l220.107 167.43-84.077 270.9c-4.869 15.66.502 32.69 13.251 42.3 6.325 4.79 13.754 7.2 21.183 7.2s14.858-2.41 21.233-7.25l220.057-167.37L1180 1592.74c12.7 9.67 29.81 9.67 42.51.05 12.75-9.61 18.07-26.64 13.2-42.35l-84.07-270.85 220.15-167.43c12.7-9.72 17.97-26.75 13.05-42.36m246.53-956.859h-169.41v-56.47c0-31.624-24.85-56.471-56.47-56.471-31.62 0-56.47 24.847-56.47 56.47v56.471H558.431v-56.47C558.431 24.847 533.584 0 501.961 0c-31.624 0-56.471 24.847-56.471 56.47v56.471H276.079c-93.742 0-169.412 75.671-169.412 169.412V1920H1800.78V282.353c0-93.741-75.67-169.412-169.41-169.412Z"/> </g>
+                    
+                  </svg>
+                <% }else{ %>
+                  <svg class="important" fill="#000000" width="800px" height="800px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
 
-      <br>
-      <br>
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    
+                    <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" d="M1687.84 451.764H219.606V282.353c0-31.624 24.847-56.471 56.471-56.471h169.412v56.471c0 31.623 24.847 56.47 56.47 56.47 31.624 0 56.471-24.847 56.471-56.47v-56.471h790.59v56.471c0 31.623 24.85 56.47 56.47 56.47 31.62 0 56.47-24.847 56.47-56.47v-56.471h169.41c31.62 0 56.47 24.847 56.47 56.471v169.411Zm-303 618.036c-4.86-15.6-18.67-26.11-34.38-26.11h-272.01l-84.027-270.853v-.052c-4.919-15.608-18.723-26.118-34.434-26.118-15.661 0-29.515 10.51-34.384 26.17l-84.078 270.853h-272.01c-15.711 0-29.515 10.51-34.384 26.11-4.869 15.61.352 32.64 13.102 42.36l220.107 167.43-84.077 270.9c-4.869 15.66.502 32.69 13.251 42.3 6.325 4.79 13.754 7.2 21.183 7.2s14.858-2.41 21.233-7.25l220.057-167.37L1180 1592.74c12.7 9.67 29.81 9.67 42.51.05 12.75-9.61 18.07-26.64 13.2-42.35l-84.07-270.85 220.15-167.43c12.7-9.72 17.97-26.75 13.05-42.36m246.53-956.859h-169.41v-56.47c0-31.624-24.85-56.471-56.47-56.471-31.62 0-56.47 24.847-56.47 56.47v56.471H558.431v-56.47C558.431 24.847 533.584 0 501.961 0c-31.624 0-56.471 24.847-56.471 56.47v56.471H276.079c-93.742 0-169.412 75.671-169.412 169.412V1920H1800.78V282.353c0-93.741-75.67-169.412-169.41-169.412Z"/> </g>
+                    
+                  </svg>
+                <% } %>
+              </button>
+            </form>
+          <% } %>
+        </div>
+      </div>
 
-      <form action="/waitingProjects/completed/<%= project._id %>?_method=PUT" method="POST">
-        <button type="submit">complete</button>
-      </form>
-    
-      <form action="/waitingProjects/ongoing/<%= folder %>/project/<%= project._id %>?_method=PUT" method="POST">
-        <button type="submit">start working on this project</button>
-      </form>
-    
-      <form action="/waitingProjects/delete/<%= folder %>/project/<%= project._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete this project</button>
-      </form>
-      <% } %>
+      <p><% if(project.note!=""){ %> <%= project.notes %> <% } %></p>
+
+      <div class="flexSpaceBetween">
+        <div class="flex">
+          <% if(project.status==="waiting"){ %>
+            <form action="/waitingProjects/ongoing/<%= folder %>/project/<%= project._id %>?_method=PUT" method="POST">
+              <button class="inCardSubmit marginRight" type="submit">in progress</button>
+            </form>
+            
+            <form action="/waitingProjects/completed/<%= project._id %>?_method=PUT" method="POST">
+              <button class="inCardSubmit" type="submit">complete</button>
+            </form>
+          <% }else if(project.status==="ongoing"){ %>
+            <form action="/ongoingProjects/waiting/<%= project._id %>?_method=PUT" method="POST">
+              <button class="inCardSubmit marginRight" type="submit">stop</button>
+            </form>
+        
+            <form action="/ongoingProjects/completed/<%= project._id %>?_method=PUT" method="POST">
+              <button class="inCardSubmit" type="submit">complete</button>
+            </form>
+          <% }else{ %>
+            <form action="/completedProjects/waiting/<%= project._id %>?_method=PUT" method="POST">
+              <button class="inCardSubmit marginRight" type="submit">restart</button>
+            </form>
+
+            <form action="/completedProjects/ongoing/<%= project._id %>?_method=PUT" method="POST">
+              <button class="inCardSubmit" type="submit">in progress</button>
+            </form>
+          <% } %>
+        </div>
+
+        <div class="flex">
+          <% if(project.status==="waiting"){ %>
+            <a class="inCardSubmit marginRight" href="/waitingProjects/edit/<%= project.folderId %>/project/<%= project._id %>">Edit this project</a>
+
+            <form action="/waitingProjects/delete/<%= project.folderId %>/project/<%= project._id %>?_method=DELETE" method="POST">
+              <button class="inCardSubmit" type="submit">Delete</button>
+            </form>
+          <% }else{ %>
+            <a class="inCardSubmit marginRight" href="/<%= project.status %>Projects/edit/<%= project._id %>">Edit this project</a>
+            <form action="/<%= project.status %>Projects/delete/<%= project._id %>?_method=DELETE" method="POST">
+              <button class="inCardSubmit" type="submit">Delete</button>
+            </form>
+          <% } %>
+
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div id="ongoing">
-    <% if(project.status==="ongoing") { %>
-      <a href="/ongoingProjects/edit/<%= project._id %>">Edit this project</a>
-  
-      <br>
-      <br>
-
-      <form action="/ongoingProjects/waiting/<%= project._id %>?_method=PUT" method="POST">
-        <button type="submit">waiting</button>
-      </form>
-  
-      <form action="/ongoingProjects/completed/<%= project._id %>?_method=PUT" method="POST">
-        <button type="submit">complete</button>
-      </form>
-
-      <form action="/ongoingProjects/delete/<%= project._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete this project</button>
-      </form>
-      <% } %>
-  </div>
-
-  <div id="completed">
-    <% if(project.status==="completed") { %>
-      <a href="/completedProjects/edit/<%= project._id %>">Edit this project</a>
-  
-      <br>
-      <br>
-  
-      <form action="/completedProjects/ongoing/<%= project._id %>?_method=PUT" method="POST">
-        <button type="submit">ongoing</button>
-      </form>
-
-      <form action="/completedProjects/waiting/<%= project._id %>?_method=PUT" method="POST">
-        <button type="submit">waiting</button>
-      </form>
-
-      <form action="/completedProjects/delete/<%= project._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete this project</button>
-      </form>
-      <% } %>
-  </div>
-
 </body>
 </html>

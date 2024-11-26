@@ -106,7 +106,7 @@ const editProject = async(req, res)=>{
       const folder = req.params.folderId
       res.render(`projects/edit.ejs`, {project, folder})
     }
-    else if(project.status==="ongoing"){
+    else if(project.status==="ongoing" || project.status==="completed"){
       res.render(`projects/edit.ejs`, {project})
     }
   }catch(error){
