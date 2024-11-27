@@ -11,15 +11,24 @@
 
   <% projects.forEach((project)=>{ %>
     <% if(project.important && project.status!="waiting"){%>
-    <a href="/<%= project.status %>Projects/project/<%= project._id %>"><%= project.name %></a>
-    <br>
+
+      <div class="flex">
+        <div class="card flex">
+          <a href="/<%= project.status %>Projects/project/<%= project._id %>"><%= project.name %></a>
+        </div>
+      </div>
+
     <br>
     <% } %>
 
     <% if(project.important && project.status==="waiting"){%>
-      <a href="/waitingProjects/show/<%= project.folderId %>/project/<%= project._id %>"><%= project.name %></a>
-      <br>
-      <br>
+      <div class="flex">
+        <div class="card flex">
+          <a href="/waitingProjects/show/<%= project.folderId %>/project/<%= project._id %>"><%= project.name %></a>
+        </div>
+      </div>
+
+    <br>
     <% } %>
   <% }) %>
 

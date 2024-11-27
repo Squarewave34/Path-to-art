@@ -11,8 +11,13 @@
 
   <% projects.forEach((project)=>{ %>
     <% if(project.status==="completed") {%>
-    <a href="/completedProjects/project/<%= project._id %>"><%= project.name %></a>
-    <br>
+
+      <div class="flex">
+        <div class="card flex">
+          <a href="/completedProjects/project/<%= project._id %>"><%= project.name %></a>
+        </div>
+      </div>
+
     <br>
   <% }}) %>
 
