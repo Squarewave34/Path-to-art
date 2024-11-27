@@ -68,7 +68,7 @@ const deleteFolder = async(req, res)=>{
 
     if(folder.owner.equals(req.session.user._id)){
       await folder.deleteOne()
-      await Project.deleteMany({folderId: req.params.folderId, owner: req.session.user._id})
+      await Project.deleteMany({folderId: req.params.folderId, owner: req.session.user._id, status:"waiting", status:"ongoing"})
       res.redirect(`/${wp}`)
     }else{
       res.send("you can't delete a list that isn't yours")
