@@ -44,7 +44,37 @@
         </div>
       </div>
 
-      <p><% if(project.note!=""){ %> <%= project.notes %> <% } %></p>
+      <div class="flex">
+        <div id="linksContainer">
+          <div id="links">
+            <div id="inspo">
+              <div id="inside">
+                <p class="noMargin">inspiration board:</p>
+                <a class="noMargin" href="<%= project.inspoBoard %>"><%= project.inspoBoard %></a>
+              </div>
+            </div>
+            <div id="link">
+              <div id="inside">
+                <p class="noMargin">important links:</p>
+                <a class="noMargin" href="<%= project.links %>"><%= project.links %></a>
+              </div>
+            </div>
+          </div>
+          <div id="notes">
+            <p class="noMargin">notes:</p>
+            <p class="noMargin"><%= project.notes %></p>
+          </div>
+        </div>
+  
+        <div id="refs">
+          <div id="imgs" class="flex">
+            <% if(project.refs===""){ %>
+              <p class="noMargin">No refs for this project</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
 
       <div class="flexSpaceBetween">
         <div class="flex">

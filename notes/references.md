@@ -2,3 +2,4 @@
 [textarea input](https://www.w3schools.com/tags/tag_textarea.asp#:~:text=The%20tag%20defines%20a,width%20font%20(usually%20Courier).)
 [css properties](https://tympanus.net/codrops/css_reference/#section_css-property)
 [adding images to ejs](https://stackoverflow.com/questions/69306786/how-add-a-img-in-ejs-file)
+[variables for colors](https://www.w3schools.com/css/css3_variables.asp#:~:text=A%20good%20way%20to%20use,can%20place%20them%20in%20variables.)

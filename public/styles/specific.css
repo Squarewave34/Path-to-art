@@ -1,0 +1,60 @@
+.important{
+  height: 30px;
+  width: 30px;
+}
+
+.important:hover{
+  border: 1.5px var(--Main) solid;
+  border-radius: 50px;
+}
+
+.importantButton{
+  background-color: var(--White);
+  border: none;
+}
+
+#refs, #linksContainer{
+  height: 70vh;
+  width: 50%;
+  margin: 15px 15px 20px;
+}
+
+#links{
+  width: 100%;
+  height: 40%;
+}
+
+#inspo, #link{
+  box-sizing: border-box;
+  width: 100%;
+  height: 50%;
+  padding-bottom: 10px;
+}
+
+#inside{
+  width: 100%;
+  height: 100%;
+}
+
+#notes{
+  width: 100%;
+  height: 60%;
+}
+
+#imgs{
+  width: 100%;
+  height: 100%;
+  background-color: var(--White);
+  border-radius: 10px;
+}
+
+#inside, #notes, #refs{
+  text-align: left;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  padding: 15px;
+  background-color: var(--OffWhite);
+  box-shadow: inset 5px 3px 4px var(--OffWhiteShadow);
+  border-radius: 10px;
+  overflow: hidden;
+}

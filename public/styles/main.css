@@ -1,11 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* colors */
+:root{
+  --Main: #8d4316;
+  --Bg: #feeac7;
+  --White: #f9f8f5;
+  --OffWhite: #efe7dd;
+  --OffWhiteShadow: hsl(28, 33%, 82%);
+}
+
+/* ref: https://www.w3schools.com/css/css3_variables.asp#:~:text=A%20good%20way%20to%20use,can%20place%20them%20in%20variables. */
+
 body{
   margin: 0 15px;
   box-sizing: border-box;
   text-align: center;
-  background-color: rgb(254, 234, 199);
+  background-color: var(--Bg);
 }
 
 /* fonts */
@@ -13,7 +24,7 @@ h1{
   font-family: "Pacifico", cursive;
   font-weight: 400;
   font-style: normal;
-  color: rgb(141, 67, 22);
+  color: var(--Main);
 }
 
 .text{
@@ -22,7 +33,7 @@ h1{
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: rgb(141, 67, 22);
+  color: var(--Main);
 }
 
 .bold{
@@ -34,7 +45,7 @@ h1{
 input, textarea{
   padding: 5px;
   border-radius: 15px;
-  border: 1.5px rgb(141, 67, 22) solid;
+  border: 1.5px var(--Main) solid;
 }
 
 label, input, textarea, p{
@@ -42,7 +53,7 @@ label, input, textarea, p{
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: rgb(141, 67, 22);
+  color: var(--Main);
 }
 
 form{
@@ -55,8 +66,8 @@ button{
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: rgb(141, 67, 22);
-  background-color: #feeac7;
+  color: var(--Main);
+  background-color: var(--Bg);
 }
 
 /* orientation */
@@ -113,14 +124,14 @@ button{
 
 .submit{
   padding: 10px;
-  border: 1.5px #8d4316 solid;
+  border: 1.5px var(--Main) solid;
   border-radius: 15px;
   font-size: medium;
 }
 
 .submit:hover{
   border:none;
-  background-color: rgb(249, 248, 245);
+  background-color: var(--White);
   box-shadow: 3px 3px;
 }
 
@@ -136,38 +147,22 @@ button{
   max-width: 600px;
   padding: 15px;
   border-radius: 15px;
-  background-color: rgb(249, 248, 245);
-  box-shadow: 3px 3px #8d4316;
+  background-color: var(--White);
+  box-shadow: 3px 3px var(--Main);
 }
 
 
 .inCardSubmit{
   padding: 10px;
-  background-color: rgb(141, 67, 22);
+  background-color: var(--Main);
   border-radius: 15px;
   font-size: medium;
   border: none;
-  color: rgb(254, 234, 199);
+  color: var(--Bg);
 }
 
 .inCardSubmit:hover{
-  border: 1.5px rgb(141, 67, 22) solid;
-  background-color: rgb(249, 248, 245);
-  color:rgb(141, 67, 22);
-}
-
-/* page specific */
-.important{
-  height: 30px;
-  width: 30px;
-}
-
-.important:hover{
-  border: 1.5px #8d4316 solid;
-  border-radius: 50px;
-}
-
-.importantButton{
-  background-color: rgb(249, 248, 245);
-  border: none;
+  border: 1.5px var(--Main) solid;
+  background-color: var(--White);
+  color: var(--Main);
 }
