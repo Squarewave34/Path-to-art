@@ -34,7 +34,6 @@ const toOngoing = async(req, res)=>{
 
     if(project.owner.equals(req.session.user._id)){
       await project.updateOne(req.body)
-      console.log(req.body, project);
       res.redirect(`/ongoingProjects`)
     }else{
       res.send("you can't edit a project that isn't yours")
@@ -67,11 +66,16 @@ const toWaiting = async(req, res)=>{
   try{
     req.body.status = "waiting"
     const project = await Project.findById(req.params.projectId)
+    const folder = await Folder.findOne({_id: project.folderId})
 
     if(project.owner.equals(req.session.user._id)){
-      await project.updateOne(req.body)
-      console.log(req.body, project);
-      res.redirect(`/waitingProjects/${project.folderId}`)
+      if(!folder){
+        res.send("you can't restart this task because it's folder doesn't exist")
+      }else{
+        await project.updateOne(req.body)
+        console.log(req.body, project);
+        res.redirect(`/waitingProjects/${project.folderId}`)
+      }
     }else{
       res.send("you can't edit a project that isn't yours")
     }
