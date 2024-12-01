@@ -17,7 +17,7 @@ const projectSchema = new mongoose.Schema({
     type: String,
   },
   refs:{
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
   },
   links:{
     type: String,
@@ -44,7 +44,7 @@ const projectSchema = new mongoose.Schema({
     type: String
   },
   FinishedProduct:{
-    type: String
+    type: mongoose.Schema.Types.ObjectId,
   },
   steps:{
     type: mongoose.Schema.Types.ObjectId,

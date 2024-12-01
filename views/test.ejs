@@ -1,0 +1,7 @@
+<% if (images.length > 0) { %>
+  <% images.forEach(image => { %>
+    <img src="data:<%= image.image.contentType %>;base64,<%= image.image.data.buffer.toString('base64') %>" alt="<%= image.name %>" />
+  <% }) %>
+<% } else { %>
+  <p>No images to display.</p>
+<% } %>
