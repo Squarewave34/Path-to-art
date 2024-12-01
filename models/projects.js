@@ -49,8 +49,12 @@ const projectSchema = new mongoose.Schema({
   steps:{
     type: mongoose.Schema.Types.ObjectId,
   },
-  stage:{
-    type: mongoose.Schema.Types.ObjectId,
+  stages:{
+    type: [{name: String, done: Boolean}]
+  },
+  currentStage:{
+    type: String,
+    required: true
   },
   status:{
     type: String,

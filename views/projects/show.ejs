@@ -61,16 +61,34 @@
             </div>
           </div>
           <div id="Notes">
-            <p class="noMargin">notes:</p>
-            <p class="noMargin"><%= project.notes %></p>
+            <p class="noMargin">steps:</p>
+            <% if(!project.steps){ %>
+              <p class="noMargin">No steps for this project</p>
+            <% } %>
           </div>
         </div>
-  
-        <div id="Refs">
-          <div id="imgs" class="flex">
-            <% if(project.refs===""){ %>
-              <p class="noMargin">No refs for this project</p>
-            <% } %>
+
+        <div id="linksContainer">
+          <div id="Links">
+            <div id="inspo">
+              <div id="inside">
+                <p class="noMargin">stage:</p>
+                <p class="noMargin"><%= project.currentStage %></p>
+              </div>
+            </div>
+            <div id="link">
+              <div id="inside">
+                <p class="noMargin">notes:</p>
+                <a class="noMargin" href="<%= project.links %>"><%= project.notes %></a>
+              </div>
+            </div>
+          </div>
+          <div id="Notes">
+            <div id="imgs" class="flex">
+              <% if(project.refs===""){ %>
+                <p class="noMargin">No refs for this project</p>
+              <% } %>
+            </div>
           </div>
         </div>
       </div>

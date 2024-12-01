@@ -17,7 +17,9 @@ const makeNewProject = async(req, res)=>{
     req.body.folderId = req.params.folderId;
     req.body.status = "waiting";
     req.body.important = false;
-
+    req.body.stages = [{name: "sketch", done: false}, {name: "lineart", done: false}, {name: "base color", done: false}, {name: "shading", done: false}]
+    req.body.currentStage = req.body.stages[0].name
+    
     await Project.create(req.body);
     res.redirect(`/${wp}/${req.params.folderId}`)
   }catch(error){
