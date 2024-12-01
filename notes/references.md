@@ -3,3 +3,7 @@
 [css properties](https://tympanus.net/codrops/css_reference/#section_css-property)
 [adding images to ejs](https://stackoverflow.com/questions/69306786/how-add-a-img-in-ejs-file)
 [variables for colors](https://www.w3schools.com/css/css3_variables.asp#:~:text=A%20good%20way%20to%20use,can%20place%20them%20in%20variables.)
+[multer](https://www.npmjs.com/package/multer)
+[multer: set up](https://www.youtube.com/watch?v=i8yxx6V9UdM)
+[multer: uploading images to database](https://www.youtube.com/watch?v=GyzC-30Bqfc)
+[multer: uploading images to database and displaying them](https://www.youtube.com/watch?v=KRVh0d9ECoI)
