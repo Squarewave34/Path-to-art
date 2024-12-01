@@ -8,6 +8,11 @@ const show = async(req, res)=>{
   res.render('ongoingProjects/index.ejs', {projects})
 }
 
+const test = async(req, res)=>{
+  res.json(req.file)
+}
+
 module.exports = {
   show,
+  test
 }
